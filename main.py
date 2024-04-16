@@ -1,20 +1,30 @@
 import tkinter as tk
 
 from core.cell import Cell
-from core.board import make_move
+
+
+def move_maid(event):
+    success = False
+    for btn in figures:
+        if btn.last_move:
+            btn.last_move = False
+            success = True
+    if success:
+        for btn in figures:
+            btn.move = 'o' if btn.move == 'x' else 'x'
+
 
 window = tk.Tk()
 window.title('New Tic Tac Toe')
-figures, move = list(), 'x'
+figures, move, last_move = list(), 'x', -1
 
 for i in range(9):
-    figures.append(Cell(window, i))
+    figures.append(Cell(window))
 
 for i, button in enumerate(figures):
     button.button.grid(row=i % 3, column=i // 3)
-    btn_copy = button
-    print(button.id, btn_copy.id)
-    button.button.configure(text=' ', command=make_move(figures, 'asdasd', btn_copy))
+
+window.bind('<Button-1>', move_maid)
 
 
 window.mainloop()
