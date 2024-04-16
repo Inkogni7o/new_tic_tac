@@ -1,13 +1,14 @@
 import tkinter as tk
 
 from core.cell import Cell
-from core.board import check_move, make_move
+from core.board import check_move, make_move, check_win
 
 
 def move_maid(event):
     success = check_move(figures)
     if success:
         make_move(figures)
+        check_win(figures)
 
 
 window = tk.Tk()
