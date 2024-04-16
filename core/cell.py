@@ -1,5 +1,6 @@
 from tkinter import Button
 
+
 class Cell:
     def __init__(self, window, id) -> None:
         self.live = 0
