@@ -1,17 +1,13 @@
 import tkinter as tk
 
 from core.cell import Cell
+from core.board import check_move, make_move
 
 
 def move_maid(event):
-    success = False
-    for btn in figures:
-        if btn.last_move:
-            btn.last_move = False
-            success = True
+    success = check_move(figures)
     if success:
-        for btn in figures:
-            btn.move = 'o' if btn.move == 'x' else 'x'
+        make_move(figures)
 
 
 window = tk.Tk()
